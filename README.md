@@ -27,3 +27,7 @@ Normalement composer doit être dans le PATH
 
 composer create-project --prefer-dist laravel/laravel ProjectName
 
+6/ Lancer le projet
+
+Se déplacer dans le répertoire du projet et lancer la commande :
+php artisan serve
