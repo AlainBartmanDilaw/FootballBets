@@ -95,7 +95,10 @@
             Football Bets - Les paris sportifs entre amis...
         </div>
 
-        <div class="links">
+        <div class="flex-center links bottom">
+            <div class="links bottom">
+                Ce site a été développé grace à <a href="https://laravel.com/">Laravel</a>
+            </div>
             <a href="https://laravel.com/docs">Docs</a>
             <a href="https://laracasts.com">Laracasts</a>
             <a href="https://laravel-news.com">News</a>
