@@ -71,15 +71,11 @@
 </head>
 <body>
 
-<div class="flex-center">
+<div class="flex-center position-ref full-height">
     <div class="top-left links">
         <a href="{{ url('locale/en') }}"><i class="fa fa-language"></i> EN</a>
         <a href="{{ url('locale/fr') }}"><i class="fa fa-language"></i> FR</a>
     </div>
-
-</div>
-
-<div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
