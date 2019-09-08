@@ -67,6 +67,13 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+        
+        .bottom {
+            position: absolute;
+            margin-bottom: 10px;
+            bottom: 18px;
+        }
+
     </style>
 </head>
 <body>
