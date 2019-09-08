@@ -67,7 +67,7 @@
         .m-b-md {
             margin-bottom: 30px;
         }
-        
+
         .bottom {
             position: absolute;
             margin-bottom: 10px;
@@ -99,12 +99,12 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Football Bets - Les paris sportifs entre amis...
+            Football Bets - {{ __('message.WithFriendsBets') }}
         </div>
 
         <div class="flex-center links bottom">
             <div class="links bottom">
-                Ce site a été développé grace à <a href="https://laravel.com/">Laravel</a>
+                {{__('message.DevelopedUsing')}}<a href="https://laravel.com/">Laravel</a>
             </div>
             <a href="https://laravel.com/docs">Docs</a>
             <a href="https://laracasts.com">Laracasts</a>
