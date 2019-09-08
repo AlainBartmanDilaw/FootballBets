@@ -29,5 +29,13 @@ composer create-project --prefer-dist laravel/laravel ProjectName
 
 6/ Lancer le projet
 
+a/
 Se déplacer dans le répertoire du projet et lancer la commande :
-php artisan serve
+php artisan serve --port=8000
+
+Lancer un navi(bleu ?)gateur puis saisir l'adresse 
+
+http://127.0.0.1:8000
+
+
+
