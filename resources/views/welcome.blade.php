@@ -91,6 +91,8 @@
                     <a href="{{ route('register') }}">{{ __('message.Register') }}</a>
                 @endif
             @endauth
+            <a href="{{ url('locale/en') }}"><i class="fa fa-language"></i> EN</a>
+            <a href="{{ url('locale/fr') }}"><i class="fa fa-language"></i> FR</a>
         </div>
     @endif
 
