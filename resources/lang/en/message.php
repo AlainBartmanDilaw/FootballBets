@@ -5,4 +5,9 @@ return [
     'Login' => 'Login',
     'DevelopedUsing' => 'This website has been developed using ',
     'WithFriendsBets' => 'Bets with your friends...',
+    'Name' => 'Name',
+    'E-MailAddress' => 'E-Mail Address',
+    'Username' => 'Username',
+    'Password' => 'Password',
+    'ConfirmPassword' => 'Confirm Password',
 ];

@@ -1,9 +1,13 @@
 <?php
 return [
     'welcome' => 'Bienvenue dans l\'application FootballBets',
-    'Register' => 's\'enregistrer',
+    'Register' => 'S\'enregistrer',
     'Login' => 'Se connecter',
     'DevelopedUsing' => 'Ce site a été développé grace à ',
     'WithFriendsBets' => 'Paris sportifs entre amis...',
-
+    'Name' => 'Nom',
+    'E-MailAddress' => 'Adresse e-mail',
+    'Username' => 'Nom d\'utilisateur',
+    'Password' => 'Mot de passe',
+    'ConfirmPassword' => 'Confirmez MdP',
 ];
