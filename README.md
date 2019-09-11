@@ -1,6 +1,19 @@
 # FootballBets
 
-Comment construire l'application :
+Installer l'application depuis un projet Git.
+1/ Récupérer le projet sur le serveur GitHub
+2/ Lancer un PowerShell (ou command.com), se déplacer dans le répertoire racine du projet ainsi chargé.
+3/ Lancer la commande de mise à jour :
+	composer update
+Les packages nécessaires sera alors rechargés/mis à jour dans le repository.
+4/ Toujours dans ce répertoire, lancer la commande de "régénération" de la clé applicative
+	php artisan key:generate
+5/ Le lancement du serveur du projet peut alors se faire correctement :
+	php artisan serve --port=8002
+
+
+
+Comment "construire" l'application "from scratch"
 
 1/ Télécharger composer sur le site https://getcomposer.org
    puis l'installer.
