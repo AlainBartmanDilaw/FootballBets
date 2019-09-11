@@ -40,3 +40,4 @@ http://127.0.0.1:8000
 7/ Créer une table
 php artisan make:migration add_username_to_users --table=users
 php artisan migrate
+
