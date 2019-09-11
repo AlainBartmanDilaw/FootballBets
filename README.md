@@ -1,6 +1,6 @@
 # FootballBets
 
-Installer l'application depuis un projet Git.
+##Installer l'application depuis un projet Git.
 1/ Récupérer le projet sur le serveur GitHub
 2/ Lancer un PowerShell (ou command.com), se déplacer dans le répertoire racine du projet ainsi chargé.
 3/ Lancer la commande de mise à jour :
@@ -13,7 +13,7 @@ Les packages nécessaires sera alors rechargés/mis à jour dans le repository.
 
 
 
-Comment "construire" l'application "from scratch"
+##Comment "construire" l'application "from scratch"
 
 1/ Télécharger composer sur le site https://getcomposer.org
    puis l'installer.
@@ -51,6 +51,35 @@ Lancer un navi(bleu ?)gateur puis saisir l'adresse
 http://127.0.0.1:8000
 
 7/ Créer une table
+php artisan make:migration add_username_to_users --create=users
+
 php artisan make:migration add_username_to_users --table=users
 php artisan migrate
 
+php artisan make:migration create_table_competition --table=Competition
+
+##Alimenter une table (SEED)
+###Créer la classe de Seed par Objet
+exemple : php artisan make:seeder NationTableSeeder
+Cette opération créer une classe nommée NationTableSeeder, contenant la fonction run qui sera lancée pour alimenter la table avec les données.
+Il suffit alors de modifier le code pour renseigner l'ensemble des enregistrements :
+
+    DB::table('nation')->insert([
+        ['cod' => 'AFG', 'lib' => 'Afghanistan'],
+        ['cod' => 'NZL', 'lib' => 'New Zealand',],
+        ...
+        ]);
+
+###Lancement du Seed
+php artisan db:seed NationTableSeeder
+##Les colonnes "created_at" et "updated_at"
+L'opération "DB:table('xxx')->insert" ne renseigne pas les 2 colonnes de types timestamps qui sont créées systématiquement lors de la création de la table.
+Il faudra donc penser à les alimenter...
+    'created_at' => now(),
+    'updated_at' => now(),
+La fonction now() fait partie de la classe Carbon\Carbon qu'il faudra prendre soin d'ajouter en tête de source.
+    use Carbon\Carbon;
+Cependant, par défaut, les dates sont au format UTC (-2h ou -1h par rapport à Paris). Il faut donc aller modifier dans le fichier confif/app.php la ligne de timezone :
+    'timezone' => 'Europe/Paris',
+(si l'on souhaite que cela soit Paris !)
+    
