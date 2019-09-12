@@ -8,7 +8,7 @@ class Ville extends Model
 {
     public $table = "ville";
 
-    public static function GetByNom($nom){
+    public static function GetIdtByNom($nom){
         $villes = Ville::where( 'nom', $nom)->get();
         foreach ($villes as $ville) {
             return $ville->idt; // 
