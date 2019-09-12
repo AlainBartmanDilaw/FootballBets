@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             DateJourneeTableSeeder::class,
             VilleTableSeeder::class,
             EquipeTableSeeder::class,
+            CompEditTableSeeder::class,
+            GroupeTableSeeder::class,
         ]);
     }
 }

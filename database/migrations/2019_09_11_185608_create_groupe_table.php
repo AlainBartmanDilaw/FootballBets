@@ -15,8 +15,17 @@ class CreateGroupeTable extends Migration
     {
         Schema::create('groupe', function (Blueprint $table) {
             $table->bigIncrements('idt');
+            $table->char('Cod', 5);
+            $table->string('Lib', 100);
+            $table->unsignedBigInteger('CompEdit_Idt');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+
+            $table->foreign('CompEdit_Idt')
+                ->references('idt')->on('CompEdit')
+                ->onDelete('cascade');
+
+            $table->unique(['CompEdit_Idt', 'Cod']);
         });
     }
 
