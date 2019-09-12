@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             EquipeTableSeeder::class,
             CompEditTableSeeder::class,
             GroupeTableSeeder::class,
+            EquipeGroupeTableSeeder::class,
+            StadeTableSeeder::class,
         ]);
     }
 }

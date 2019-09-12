@@ -8,10 +8,16 @@ class Ville extends Model
 {
     public $table = "ville";
 
+
+    public function Equipe()
+    {
+        return $this->belongsTo('App\Equipe', 'idt');
+    }
+
     public static function GetIdtByNom($nom){
         $villes = Ville::where( 'nom', $nom)->get();
         foreach ($villes as $ville) {
-            return $ville->idt; // 
+            return $ville->idt; //
         }
         return -1; // Non trouvé !
     }
