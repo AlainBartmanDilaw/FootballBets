@@ -73,6 +73,7 @@ Seules les colonnes d'identifiant et de suivi (timestamp de création et de modi
 Il suffit ensuite d'ajouter les propriétés de la table.
 
 exemple :
+
 	php artisan make:migration add_username_to_users --create=users
 	php artisan make:migration add_username_to_users --table=users
 	php artisan make:migration create_table_competition --table=Competition
@@ -103,15 +104,16 @@ Commande
 ##Les colonnes "created_at" et "updated_at"
 L'opération "DB:table('xxx')->insert" ne renseigne pas les 2 colonnes de types timestamps qui sont créées systématiquement lors de la création de la table.
 Il faudra donc penser à les alimenter...
+
     'created_at' => now(),
     'updated_at' => now(),
 La fonction now() fait partie de la classe Carbon\Carbon qu'il faudra prendre soin d'ajouter en tête de source.
+
     use Carbon\Carbon;
 Cependant, par défaut, les dates sont au format UTC (-2h ou -1h par rapport à Paris). Il faut donc aller modifier dans le fichier confif/app.php la ligne de timezone :
+
     'timezone' => 'Europe/Paris',
 (si l'on souhaite que cela soit Paris !)
-    
-
 
 ##Eloquent Model Generator
 	https://github.com/krlove/eloquent-model-generator
