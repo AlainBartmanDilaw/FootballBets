@@ -15,8 +15,9 @@ class CreatePhaseTable extends Migration
     {
         Schema::create('phase', function (Blueprint $table) {
             $table->bigIncrements('idt');
-            $table->string('lib', 100)->nullable();
-            $table->timestamps();
+            $table->string('lib', 100);
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

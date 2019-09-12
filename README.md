@@ -13,36 +13,37 @@ Les packages nécessaires sera alors rechargés/mis à jour dans le repository.
 
 
 
-##Comment "construire" l'application "from scratch"
+#Comment "construire" l'application "from scratch"
+## Installation des outils
+###Outil composer
+Télécharger composer sur le site https://getcomposer.org puis l'installer.
 
-1/ Télécharger composer sur le site https://getcomposer.org
-   puis l'installer.
-
-2/ Télécharger la dernière version de PHP sur le site 
+###PHP
+Télécharger la dernière version de PHP sur le site 
 	https://windows.php.net/download/
 ou  https://www.php.net/downloads.php
 
 puis l'installer.
 
-3/ Télécharger la dernière version de node.js sur le site
+###NodeJS
+Télécharger la dernière version de node.js sur le site
 	https://nodejs.org/en/
-
 puis l'installer.
 
-4/ Télécharger/installer laravel
+###Laravel
+Télécharger/installer laravel
 En utilisant un "command line" (shell Unix ou cmd Windows), charger et intaller avec composer :
 
 composer global require laravel/installer
 
 Normalement composer doit être dans le PATH
 
-5/ Créer le projet ProjectName
+## Création d'un projet
+Créer le projet ProjectName
 
 composer create-project --prefer-dist laravel/laravel ProjectName
 
-6/ Lancer le projet
-
-a/
+##Lancer le projet
 Se déplacer dans le répertoire du projet et lancer la commande :
 php artisan serve --port=8000
 
@@ -50,17 +51,28 @@ Lancer un navi(bleu ?)gateur puis saisir l'adresse
 
 http://127.0.0.1:8000
 
-7/ Créer une table
-php artisan make:migration add_username_to_users --create=users
+#Créer une table
+##Génération du script de la table
+Il s'agit ici de créer le canevas de structure d'une table.
+Seules les colonnes d'identifiant et de suivi (timestamp de création et de modification) seront générées dans le source.
+Il suffit ensuite d'ajouter les propriétés de la table.
 
-php artisan make:migration add_username_to_users --table=users
-php artisan migrate
+exemple :
+	php artisan make:migration add_username_to_users --create=users
+	php artisan make:migration add_username_to_users --table=users
+	php artisan make:migration create_table_competition --table=Competition
 
-php artisan make:migration create_table_competition --table=Competition
+##Création de la table dans la base de données
+Une fois le script de la table terminé, il faut la créer dans la base de données.
+
+	php artisan migrate
 
 ##Alimenter une table (SEED)
 ###Créer la classe de Seed par Objet
-exemple : php artisan make:seeder NationTableSeeder
+
+exemple :
+	php artisan make:seeder NationTableSeeder
+	
 Cette opération créer une classe nommée NationTableSeeder, contenant la fonction run qui sera lancée pour alimenter la table avec les données.
 Il suffit alors de modifier le code pour renseigner l'ensemble des enregistrements :
 
@@ -71,7 +83,8 @@ Il suffit alors de modifier le code pour renseigner l'ensemble des enregistremen
         ]);
 
 ###Lancement du Seed
-php artisan db:seed NationTableSeeder
+	php artisan db:seed NationTableSeeder
+Commande
 ##Les colonnes "created_at" et "updated_at"
 L'opération "DB:table('xxx')->insert" ne renseigne pas les 2 colonnes de types timestamps qui sont créées systématiquement lors de la création de la table.
 Il faudra donc penser à les alimenter...
@@ -83,3 +96,9 @@ Cependant, par défaut, les dates sont au format UTC (-2h ou -1h par rapport à 
     'timezone' => 'Europe/Paris',
 (si l'on souhaite que cela soit Paris !)
     
+
+
+##Eloquent Model Generator
+	https://github.com/krlove/eloquent-model-generator
+	https://github.com/pepijnolivier/Eloquent-Model-Generator
+	--> https://github.com/JonathanGuo/eloquent-model-generator <--

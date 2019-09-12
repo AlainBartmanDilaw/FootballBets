@@ -16,6 +16,11 @@ class DatabaseSeeder extends Seeder
             CompetitionTableSeeder::class,
             EditionTableSeeder::class,
             NationTableSeeder::class,
+            PhaseTableSeeder::class,
+            JourneeTableSeeder::class,
+            DateJourneeTableSeeder::class,
+            VilleTableSeeder::class,
+            EquipeTableSeeder::class,
         ]);
     }
 }

@@ -15,7 +15,22 @@ class CreateEquipeTable extends Migration
     {
         Schema::create('equipe', function (Blueprint $table) {
             $table->bigIncrements('idt');
-            $table->timestamps();
+
+            $table->string('Nom');
+            $table->string('NomLng');
+            $table->string('Nation_Cod');
+            $table->unsignedBigInteger('Ville_Idt');
+
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+
+            $table->foreign('Nation_Cod')
+                ->references('cod')
+                ->on('nation');
+
+            $table->foreign('Ville_Idt')
+                ->references('Idt')
+                ->on('Ville');
         });
     }
 

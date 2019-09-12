@@ -27,3 +27,9 @@ Route::get('locale/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return redirect()->back();
 });
+
+Route::get('/phpinfo', function () {
+    return response()->json([
+        'stuff' => phpinfo()
+    ]);
+});
