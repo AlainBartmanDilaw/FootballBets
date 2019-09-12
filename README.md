@@ -32,7 +32,7 @@ puis l'installer.
 
 ###Laravel
 Télécharger/installer laravel
-En utilisant un "command line" (shell Unix ou cmd Windows), charger et intaller avec composer :
+En utilisant un "command line" (shell Unix ou cmd Windows), charger et installer avec composer :
 
 composer global require laravel/installer
 
@@ -44,12 +44,27 @@ Créer le projet ProjectName
 composer create-project --prefer-dist laravel/laravel ProjectName
 
 ##Lancer le projet
-Se déplacer dans le répertoire du projet et lancer la commande :
-php artisan serve --port=8000
+Se déplacer dans le répertoire du projet et lancer la commande :<br/>
+
+    php artisan serve --port=8000
 
 Lancer un navi(bleu ?)gateur puis saisir l'adresse 
 
-http://127.0.0.1:8000
+    http://127.0.0.1:8000
+    
+##Problème de fichier .env
+Le fichier .env n'est pas envoyé sur Git (fait partie des fichiers ignorés).
+Il faudra donc le recréer à partir du fichier .env.example.
+
+###Modification paramétrage base MySQL
+Changer la connexion MySQL avec les bonnes inforamtions...
+
+##Problème de clé 
+Au premier lancement, il risque de se produire l'erreur "Your app key is missing" 
+
+    php artisan key:generate
+    
+Le site devrait alors être "opérationnel"...
 
 #Créer une table
 ##Génération du script de la table
