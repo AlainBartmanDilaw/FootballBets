@@ -13,12 +13,14 @@ class EditionTableSeeder extends Seeder
     {
         //
         DB::table('edition')->insert([
-            'cod' => '49',
-            'lib' => '49ème édition',
-        ]);
-        DB::table('edition')->insert([
-            'cod' => '66',
-            'lib' => '66ème édition',
+            [
+                'cod' => '49',
+                'lib' => '49ème édition',
+            ],
+            [
+                'cod' => '66',
+                'lib' => '66ème édition',
+            ],
         ]);
     }
 }

@@ -99,7 +99,9 @@ Il suffit alors de modifier le code pour renseigner l'ensemble des enregistremen
         ]);
 
 ###Lancement du Seed
+
 	php artisan db:seed NationTableSeeder
+
 Commande
 ##Les colonnes "created_at" et "updated_at"
 L'opération "DB:table('xxx')->insert" ne renseigne pas les 2 colonnes de types timestamps qui sont créées systématiquement lors de la création de la table.
@@ -119,3 +121,9 @@ Cependant, par défaut, les dates sont au format UTC (-2h ou -1h par rapport à 
 	https://github.com/krlove/eloquent-model-generator
 	https://github.com/pepijnolivier/Eloquent-Model-Generator
 	--> https://github.com/JonathanGuo/eloquent-model-generator <--
+
+##Mettre à jour les références de classe
+Lorsque le développement se fait sur plusieurs plateformes, par plusieurs personnes, les classes ne sont pas correctement reconnues.
+La commande suivante permet de rafraichir les classes...
+
+    composer dump-autoload

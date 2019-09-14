@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ville extends Model
 {
-    public $table = "ville";
-
+    public $table = "Ville";
 
     public function Equipe()
     {
-        return $this->belongsTo('App\Equipe', 'idt');
+        return $this->belongsTo(Equipe::class, 'ville_idt', 'idt');
     }
 
     public static function GetIdtByNom($nom){

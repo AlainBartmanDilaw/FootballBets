@@ -11,26 +11,23 @@ class Equipe extends Model
 
     public function Ville()
     {
-        return $this->hasOne('App\Ville', 'idt', 'Ville_Idt');
+        return $this->hasOne(Ville::class, 'idt', 'Ville_Idt');
     }
 
-    public static function GetIdtByNom($nom)
+    public static function GetIdt($nom)
     {
-        echo "Recherche GetIdtByNom " . $nom . "\n";
-        $equipes = Equipe::where('Nom', $nom)->get();
-        foreach ($equipes as $equipe) {
-            return $equipe->idt; //
+        $values = Equipe::where('Nom', $nom)->get();
+        foreach ($values as $value) {
+            return $value->idt; //
         }
         return -1; // Non trouvé !
     }
 
     public static function GetVilleIdtByNom($nom)
     {
-        echo "Recherche " . $nom . "\n";
-        $equipes = Equipe::where('Nom', $nom)->get();
-        foreach ($equipes as $equipe) {
-            echo "Retour " . $equipe->Ville->Idt . "\n";
-            return $equipe->Ville->Idt; //
+        $values = Equipe::where('Nom', $nom)->get();
+        foreach ($values as $value) {
+            return $value->Ville->idt; //
         }
         return -1; // Non trouvé !
     }

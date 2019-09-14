@@ -18,13 +18,15 @@ class DatabaseSeeder extends Seeder
             NationTableSeeder::class,
             PhaseTableSeeder::class,
             JourneeTableSeeder::class,
+            CompEditTableSeeder::class,
             DateJourneeTableSeeder::class,
             VilleTableSeeder::class,
             EquipeTableSeeder::class,
-            CompEditTableSeeder::class,
             GroupeTableSeeder::class,
             EquipeGroupeTableSeeder::class,
             StadeTableSeeder::class,
+            MatchTableSeeder::class,
+            MatchEquipeTableSeeder::class,
         ]);
     }
 }

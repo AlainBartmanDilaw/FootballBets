@@ -15,6 +15,12 @@ class CreateMatchequipeTable extends Migration
     {
         Schema::create('matchequipe', function (Blueprint $table) {
             $table->bigIncrements('idt');
+
+            $table->unsignedBigInteger('Match_Idt')->comment('Identifiant de match');
+            $table->unsignedBigInteger('Equipe_Idt')->comment('Identifiant d\'équipe');
+            $table->enum('DomExt', ['D', 'E'])->comment('[D]omicile / [E]xtérieur');
+            $table->unsignedTinyInteger('Score')->comment('Score réalisé = résultat')->nullable();
+
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

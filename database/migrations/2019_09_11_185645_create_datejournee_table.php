@@ -15,16 +15,23 @@ class CreateDatejourneeTable extends Migration
     {
         Schema::create('datejournee', function (Blueprint $table) {
             $table->bigIncrements('idt');
-            $table->unsignedBigInteger('journee_idt');
-            $table->date('dte');
+
+            $table->unsignedBigInteger('CompEdit_Idt');
+            $table->unsignedBigInteger('Journee_idt');
+            $table->date('Dte');
+
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-            $table->foreign('journee_idt')
+            $table->foreign('Journee_idt')
                 ->references('idt')->on('journee')
                 ->onDelete('cascade');
 
-            $table->unique(['journee_idt', 'dte']);
+            $table->foreign('CompEdit_Idt')
+                ->references('idt')->on('CompEdit')
+                ->onDelete('cascade');
+
+            $table->unique(['CompEdit_Idt', 'Journee_idt', 'dte']);
         });
     }
 
