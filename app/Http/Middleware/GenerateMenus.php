@@ -19,7 +19,7 @@ class GenerateMenus
             $menu->add('Home', ['route' => 'home', 'class' => 'nav-item']);
             // $menu->add('Home2',     ['route'  => 'home.page', 'class' => 'navbar navbar-home', 'id' => 'home']);
             $menu->add('About', [ 'route' => 'about', 'class' => 'nav-item']);
-            $menu->add('Services', 'services');
+            // $menu->add('Services', 'services');
             $menu->add('Contact', 'contact');
         });
 
