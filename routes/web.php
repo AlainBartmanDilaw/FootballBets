@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
+// Route::get('about', 'AboutController@index')->name('about');
 
 Route::get('locale/{locale}', function ($locale) {
     Session::put('locale', $locale);
@@ -29,3 +29,19 @@ Route::get('/phpinfo', function () {
         'stuff' => phpinfo()
     ]);
 });
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return View::make('pages.home');
+})->name('home2');
+Route::get('about', function () {
+    return View::make('pages.about');
+})->name('about');
+Route::get('contact', 'ContactController@index'); // ->name('contact');
+// Route::get('projects', function () {
+//     return View::make('pages.projects');
+// });
+// Route::get('contact', function () {
+//     return View::make('pages.contact');
+// });

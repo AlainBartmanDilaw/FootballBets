@@ -10,4 +10,5 @@ return [
     'Username' => 'Username',
     'Password' => 'Password',
     'ConfirmPassword' => 'Confirm Password',
+    'Rules' => '<br>Here are the rules of this bet game !<br><br>',
 ];

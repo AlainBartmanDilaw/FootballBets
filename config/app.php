@@ -191,6 +191,8 @@ return [
          * Generator Service Providers...
          */
 
+        // Menus
+        // Lavary\Menu\ServiceProvider::class,
     ],
 
     /*

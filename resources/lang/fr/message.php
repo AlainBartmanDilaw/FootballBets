@@ -10,4 +10,5 @@ return [
     'Username' => 'Nom d\'utilisateur',
     'Password' => 'Mot de passe',
     'ConfirmPassword' => 'Confirmez MdP',
+    'Rules' => 'Voici les règles et principe de ce jeu de paris !',
 ];

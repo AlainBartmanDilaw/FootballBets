@@ -127,3 +127,13 @@ Lorsque le développement se fait sur plusieurs plateformes, par plusieurs perso
 La commande suivante permet de rafraichir les classes...
 
     composer dump-autoload
+
+# Mise en place d'un menu
+## Site
+
+	https://github.com/lavary/laravel-menu
+
+##Installation
+
+	composer require lavary/laravel-menu
+
