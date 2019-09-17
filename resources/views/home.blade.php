@@ -43,7 +43,7 @@
                     <td><input id="{{$data->Match_Idt}}_{{$data->Equipe_Idt_Dom}}" min="0" max="20" size="3px" maxlength="3" class="center"></td>
                     <td><input id="{{$data->Match_Idt}}_{{$data->Equipe_Idt_Ext}}" min="0" max="20" size="3px" maxlength="3" class="center"></td>
                     <td>{{$data->Equipe_Nom_Ext}}</td>
-                    <td><a class="Valider" href="#">Valider</a>
+                    <td><a id="Valider_{{$data->Match_Idt}}" class="Valider" href="#">Valider</a>
                     </td>
                 </tr>
                 </tbody>
