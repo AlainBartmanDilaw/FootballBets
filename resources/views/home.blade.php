@@ -3,6 +3,9 @@
 <style type="text/css">
     .right { text-align: right; }
     .center { text-align: center; }
+    .Valider{
+        color: #1f6fb2;
+    }
 </style>
 
 @extends('layouts.app')
@@ -30,10 +33,10 @@
                     <td>{{$data->DteHre}}</td>
                     <td>{{$data->Stade_Nom}}</td>
                     <td>{{$data->Equipe_Nom_Dom}}</td>
-                    <td><input id="{{$data->Equipe_Idt_Dom}}" min="0" max="20" size="3px" maxlength="3" class="center"></td>
-                    <td><input id="{{$data->Equipe_Idt_Ext}}" min="0" max="20" size="3px" maxlength="3" class="center"></td>
+                    <td><input id="{{$data->Match_Idt}}_{{$data->Equipe_Idt_Dom}}" min="0" max="20" size="3px" maxlength="3" class="center"></td>
+                    <td><input id="{{$data->Match_Idt}}_{{$data->Equipe_Idt_Ext}}" min="0" max="20" size="3px" maxlength="3" class="center"></td>
                     <td>{{$data->Equipe_Nom_Ext}}</td>
-                    <td><a href="/match/edit?idt={{$data->Match_Idt}}&dom={{Request::input($data->Equipe_Idt_Dom)}}&ext={{Request::input($data->Equipe_Idt_Ext)}}">Valider</a>
+                    <td><a class="Valider">Valider</a>
                         <form method="post"
                               action="<?php echo url('/') . "/student/" . $data->Match_Idt . "/delete";?>">
                             <input type="hidden" name="_token" value="{!!csrf_token() !!}">
