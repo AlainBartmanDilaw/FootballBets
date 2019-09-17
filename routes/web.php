@@ -52,3 +52,5 @@ Route::get('welcome2', function () {
 Route::get('welcome', function () {
     return View::make('pages.welcome');
 })->name('welcome');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -11,4 +11,8 @@ return [
     'Password' => 'Password',
     'ConfirmPassword' => 'Confirm Password',
     'Rules' => '<br>Here are the rules of this bet game !<br><br>',
+    'PleaseSendTo' => 'For any information, please send a message to ',
+    'Language' => 'Language',
+    'About'=>'About',
+
 ];
