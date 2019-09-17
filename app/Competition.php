@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Competition extends Model
 {
     //
-    public $table = "";
+    public $table = "Competition";
 
 }

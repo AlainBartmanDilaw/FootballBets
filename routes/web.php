@@ -25,11 +25,7 @@ Route::get('/phpinfo', function () {
 });
 
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/', function () {
-    return View::make('pages.home');
-})->name('home2');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('about', function () {
     return View::make('pages.about');
@@ -53,4 +49,15 @@ Route::get('welcome', function () {
     return View::make('pages.welcome');
 })->name('welcome');
 
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('logout', 'LoginController@logout');
+
+Route::get('home', function () {
+    $allMatch = DB::table('AllMatch')->get();
+    return view('home', ['allMatch' => $allMatch]);
+})->name('home');
+
+Route::get('/', function () {
+    $allMatch = DB::table('AllMatch')->get();
+    return view('home', ['allMatch' => $allMatch]);
+})->name('home');
+

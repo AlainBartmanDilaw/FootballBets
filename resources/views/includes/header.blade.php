@@ -1,6 +1,6 @@
 <div class="container">
     <span class="navbar-brand-center">Football Bets</span>
-    <span class="navbar-brand-right">© Copyright 2019 Bartman Dilaw Alain & Ben-Oït (n'est ce pas !)</span>
+    <span class="navbar-brand-right">© Copyright 2019-2020 Bartman Dilaw Alain & Ben-Oït (n'est ce pas !)</span>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         {{--    <div class="topnav">--}}
         <a class="navbar-brand" href="/home">Home</a>
