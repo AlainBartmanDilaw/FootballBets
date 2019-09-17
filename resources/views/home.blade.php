@@ -1,4 +1,10 @@
-
+<script>
+    $( document ).ready( function() {
+        $('.Valider').click( function() {
+            alert("Ok");
+        });
+    });
+</script>
 
 <style type="text/css">
     .right { text-align: right; }
@@ -36,7 +42,7 @@
                     <td><input id="{{$data->Match_Idt}}_{{$data->Equipe_Idt_Dom}}" min="0" max="20" size="3px" maxlength="3" class="center"></td>
                     <td><input id="{{$data->Match_Idt}}_{{$data->Equipe_Idt_Ext}}" min="0" max="20" size="3px" maxlength="3" class="center"></td>
                     <td>{{$data->Equipe_Nom_Ext}}</td>
-                    <td><a class="Valider">Valider</a>
+                    <td><a class="Valider" href="#">Valider</a>
                         <form method="post"
                               action="<?php echo url('/') . "/student/" . $data->Match_Idt . "/delete";?>">
                             <input type="hidden" name="_token" value="{!!csrf_token() !!}">
