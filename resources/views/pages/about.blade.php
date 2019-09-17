@@ -1,5 +1,4 @@
-<!-- {!! $MyNavBar->asUl() !!} -->
-
+{{--@extends('layouts.default')--}}
 @extends('layouts.app')
 
 @section('content')

@@ -1,5 +1,3 @@
-<!-- {!! $MyNavBar->asOl() !!} -->
-
 @extends('layouts.app')
 
 @section('content')

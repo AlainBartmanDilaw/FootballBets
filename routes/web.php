@@ -11,13 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
-
-// Route::get('about', 'AboutController@index')->name('about');
 
 Route::get('locale/{locale}', function ($locale) {
     Session::put('locale', $locale);
@@ -32,16 +26,29 @@ Route::get('/phpinfo', function () {
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', function () {
     return View::make('pages.home');
 })->name('home2');
+
 Route::get('about', function () {
     return View::make('pages.about');
 })->name('about');
+
 Route::get('contact', 'ContactController@index'); // ->name('contact');
-// Route::get('projects', function () {
-//     return View::make('pages.projects');
-// });
-// Route::get('contact', function () {
-//     return View::make('pages.contact');
-// });
+
+Route::get('test', function () {
+    return View::make('pages.test');
+})->name('test');
+
+Route::get('test2', function () {
+    return View::make('pages.test2');
+});
+
+Route::get('welcome2', function () {
+    return View::make('pages.welcome2');
+})->name('welcome2');
+
+Route::get('welcome', function () {
+    return View::make('pages.welcome');
+})->name('welcome');

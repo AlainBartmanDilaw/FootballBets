@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'YLaravel'),
+    'name' => env('APP_NAME', 'FootballBets'),
 
     /*
     |--------------------------------------------------------------------------
