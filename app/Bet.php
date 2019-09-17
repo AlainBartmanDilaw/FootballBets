@@ -9,13 +9,25 @@ class Bet extends Model
     //
     public $table = "Bet";
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'Score',
+        'matchequipe_idt',
+        'User_Id',
+    ];
+
     public function User()
     {
-        return $this->hasOne(User::class, 'id', 'User_Idt');
+        return $this->belongsTo(User::class, 'User_id', 'id');
     }
 
     public function MatchEquipe()
     {
-        return $this->hasOne(MatchEquipe::class, 'idt', 'MatchEquipe_Idt');
+        return $this->belongsTo(MatchEquipe::class, 'matchequipe_idt', 'idt');
     }
 }
+

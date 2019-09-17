@@ -16,14 +16,14 @@ class CreateBetTable extends Migration
         Schema::create('bet', function (Blueprint $table) {
             $table->bigIncrements('idt');
 
-            $table->unsignedBigInteger('MatchEquipe_Idt')->comment('Identifiant de match');
+            $table->unsignedBigInteger('matchequipe_idt')->comment('Identifiant de match');
             $table->unsignedBigInteger('User_Id')->comment('Identifiant d\'utilisateur');
             $table->unsignedTinyInteger('Score')->comment('Score parié')->nullable();
 
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-            $table->foreign('MatchEquipe_Idt')
+            $table->foreign('matchequipe_idt')
                 ->references('Idt')
                 ->on('MatchEquipe');
 

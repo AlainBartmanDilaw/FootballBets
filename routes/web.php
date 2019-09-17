@@ -61,3 +61,4 @@ Route::get('/', function () {
     return view('home', ['allMatch' => $allMatch]);
 })->name('home');
 
+Route::post('/ajax', 'AjaxController@ajax_call');

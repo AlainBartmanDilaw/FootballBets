@@ -39,6 +39,10 @@ class User extends Authenticatable
 
     public function Bet()
     {
-        return $this->belongsTo(Bet::class, 'User_Id', 'id');
+        return $this->hasOne(Bet::class, 'User_Id', 'id');
     }
+//    public function Bet()
+//    {
+//        return $this->belongsTo(Bet::class, 'User_Id', 'id');
+//    }
 }

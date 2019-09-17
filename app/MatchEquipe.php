@@ -11,7 +11,7 @@ class MatchEquipe extends Model
 
     public function Bet()
     {
-        return $this->belongsTo(Bet::class, 'MatchEquipe_idt', 'idt');
+        return $this->hasOne(Bet::class, 'matchequipe_idt', 'idt');
     }
 
 }
