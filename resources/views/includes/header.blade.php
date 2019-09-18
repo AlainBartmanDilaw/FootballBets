@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
     <span class="navbar-brand-center">Football Bets</span>
     <span class="navbar-brand-right">© Copyright 2019-2020 Bartman Dilaw Alain & Ben-Oït (n'est ce pas !)</span>
@@ -59,3 +60,16 @@
     </main>
 </div>
 
+=======
+<div class="navbar">
+    <div class="navbar-inner">
+        <a id="logo" href="/">Single Malt</a>
+        <ul class="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </div>
+</div>
+>>>>>>> EcransMenus
