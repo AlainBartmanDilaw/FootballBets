@@ -64,15 +64,16 @@
         font-size: 0.5rem;
     }
 
-    input {
+    .Score {
         color: red;
         width: 100%;
         object-position: center;
         position: center;
+        background:#fff6a1;
     }
 
-    input[type=text]:focus {
-        background-color: lightblue;
+    .Score:focus {
+        background:lightblue;
     }
 </style>
 
@@ -102,10 +103,10 @@
                     <td class="DateHeure">{{$data->DteHre}}</td>
                     <td>{{$data->Stade_Nom}}</td>
                     <td>{{$data->Equipe_Nom_Dom}}</td>
-                    <td><input id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}" min="0" max="20" size="3px"
-                               maxlength="3" class="center" value="{{$data->ScoreDomicile}}"></td>
-                    <td><input id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}" min="0" max="20" size="3px"
-                               maxlength="3" class="center" value="{{$data->ScoreExterieur}}"></td>
+                    <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}" min="0" max="20" size="3px"
+                               maxlength="3" value="{{$data->ScoreDomicile}}"></td>
+                    <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}" min="0" max="20" size="3px"
+                               maxlength="3" value="{{$data->ScoreExterieur}}"></td>
                     <td>{{$data->Equipe_Nom_Ext}}</td>
                     <td>
                         <a onclick="Valider({{$data->Match_Idt}}, {{$data->MatchEquipe_Idt_Dom}}, {{$data->MatchEquipe_Idt_Ext}}, {{\Auth::user()->id}});"
