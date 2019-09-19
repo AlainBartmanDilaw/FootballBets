@@ -52,13 +52,15 @@ Route::get('welcome', function () {
 Route::get('logout', 'LoginController@logout');
 
 Route::get('home', function () {
-    $allMatch = DB::table('AllMatch')->get();
-    return view('home', ['allMatch' => $allMatch]);
+    $allMatchBet = DB::table('AllMatchBet')->get();
+    \Log::info($allMatchBet->all());
+    return view('home', ['allMatchBet' => $allMatchBet]);
 })->name('home');
 
 Route::get('/', function () {
-    $allMatch = DB::table('AllMatch')->get();
-    return view('home', ['allMatch' => $allMatch]);
+    $allMatchBet = DB::table('AllMatchBet')->get();
+    \Log::info($allMatchBet->all());
+    return view('home', ['allMatchBet' => $allMatchBet]);
 })->name('home');
 
 Route::post('/ajax', 'AjaxController@ajax_call');

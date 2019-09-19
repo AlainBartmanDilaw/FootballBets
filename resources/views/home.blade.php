@@ -5,26 +5,25 @@
     //         alert("Ok" + $(this));
     //     });
     // });
-    function Valider(matchIdentifiant,
+    function Valider(matchIdentifier,
                      equipeDomicileIdentifiant,
                      equipeExterieurIdentifiant,
                      UserId) {
-        // alert("Match " + matchIdentifiant + ', ' + equipeDomicileIdentifiant + ', ' + equipeExterieurIdentifiant + ', ' + UserId);
-        console.log("Match " + matchIdentifiant + ', ' + equipeDomicileIdentifiant + ', ' + equipeExterieurIdentifiant + ', ' + UserId);
+        console.log("Match " + matchIdentifier + ', ' + equipeDomicileIdentifiant + ', ' + equipeExterieurIdentifiant + ', ' + UserId);
 
-        var identifantDomicile = '#' + matchIdentifiant + '_' + equipeDomicileIdentifiant;
-        var identifantExterieur = '#' + matchIdentifiant + '_' + equipeExterieurIdentifiant;
+        var identifantDomicile = '#' + matchIdentifier + '_' + equipeDomicileIdentifiant;
+        var identifantExterieur = '#' + matchIdentifier + '_' + equipeExterieurIdentifiant;
 
-        var scoreDomicile = $(identifantDomicile).val()
-        var scoreExterieur = $(identifantExterieur).val()
+        var scoreDomicile = $(identifantDomicile).val();
+        var scoreExterieur = $(identifantExterieur).val();
 
-        console.log("Match " + matchIdentifiant + ', ' + scoreDomicile + ', ' + scoreExterieur + ', ' + UserId);
+        console.log("Match " + matchIdentifier + ', ' + scoreDomicile + ', ' + scoreExterieur + ', ' + UserId);
         $.ajax({
             url: "/ajax",
             data: {
                 "_token": "{{ csrf_token() }}",
                 "User_id": UserId,
-                "Match_Idt": matchIdentifiant,
+                "Match_Idt": matchIdentifier,
                 "MatchEquipe_Idt_Dom": equipeDomicileIdentifiant,
                 "MatchEquipe_Idt_Ext": equipeExterieurIdentifiant,
                 "ScoreDomicile": scoreDomicile,
@@ -57,7 +56,23 @@
     }
 
     .Valider {
-        color: #1f6fb2;
+        color:darkred;
+        text-align: right;
+    }
+
+    .DateHeure{
+        font-size: 0.5rem;
+    }
+
+    input {
+        color: red;
+        width: 100%;
+        object-position: center;
+        position: center;
+    }
+
+    input[type=text]:focus {
+        background-color: lightblue;
     }
 </style>
 
@@ -70,33 +85,35 @@
             <thead>
             <tr>
                 <td>Num</td>
-                <td>Stade</td>
                 <td>Date/Heure</td>
+                <td>Stade</td>
                 <td>Equipe Dom.</td>
-                <td>Score Dom.</td>
-                <td>Score Ext.</td>
+                <td>Dom.</td>
+                <td>Ext.</td>
                 <td>Equipe Ext.</td>
                 <td>Pensez-y</td>
             </tr>
             </thead>
-            @foreach($allMatch as $key => $data)
+            @foreach($allMatchBet as $key => $data)
+                @if($data->User_Id == \Auth::user()->id)
                 <tbody>
                 <tr id="{{$data->Match_Idt}}">
                     <td>{{$data->Match_Num}}</td>
-                    <td>{{$data->DteHre}}</td>
+                    <td class="DateHeure">{{$data->DteHre}}</td>
                     <td>{{$data->Stade_Nom}}</td>
                     <td>{{$data->Equipe_Nom_Dom}}</td>
-                    <td><input id="{{$data->Match_Idt}}_{{$data->Equipe_Idt_Dom}}" min="0" max="20" size="3px"
-                               maxlength="3" class="center"></td>
-                    <td><input id="{{$data->Match_Idt}}_{{$data->Equipe_Idt_Ext}}" min="0" max="20" size="3px"
-                               maxlength="3" class="center"></td>
+                    <td><input id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}" min="0" max="20" size="3px"
+                               maxlength="3" class="center" value="{{$data->ScoreDomicile}}"></td>
+                    <td><input id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}" min="0" max="20" size="3px"
+                               maxlength="3" class="center" value="{{$data->ScoreExterieur}}"></td>
                     <td>{{$data->Equipe_Nom_Ext}}</td>
                     <td>
-                        <a onclick="Valider({{$data->Match_Idt}}, {{$data->Equipe_Idt_Dom}}, {{$data->Equipe_Idt_Ext}}, {{\Auth::user()->id}});"
+                        <a onclick="Valider({{$data->Match_Idt}}, {{$data->MatchEquipe_Idt_Dom}}, {{$data->MatchEquipe_Idt_Ext}}, {{\Auth::user()->id}});"
                            class="Valider" href="#">Valider</a>
                     </td>
                 </tr>
                 </tbody>
+                @endif
             @endforeach
         </table>
     </div>
