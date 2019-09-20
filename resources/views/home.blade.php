@@ -6,9 +6,9 @@
     //     });
     // });
     function Valider(matchIdentifier,
-                     equipeDomicileIdentifiant,
-                     equipeExterieurIdentifiant,
-                     UserId) {
+        equipeDomicileIdentifiant,
+        equipeExterieurIdentifiant,
+        UserId) {
         console.log("Match " + matchIdentifier + ', ' + equipeDomicileIdentifiant + ', ' + equipeExterieurIdentifiant + ', ' + UserId);
 
         var identifantDomicile = '#' + matchIdentifier + '_' + equipeDomicileIdentifiant;
@@ -31,7 +31,7 @@
             },
             type: "post",
             dataType: 'JSON',
-            success: function (data) {
+            success: function(data) {
 
                 console.log('Count Users =' + data);
 
@@ -39,7 +39,7 @@
                 $('.ajax').append('Count Users =' + data);
 
             },
-            error: function (e) {
+            error: function(e) {
                 console.log(e.responseText);
             },
         });
@@ -56,11 +56,11 @@
     }
 
     .Valider {
-        color:darkred;
+        color: darkred;
         text-align: right;
     }
 
-    .DateHeure{
+    .DateHeure {
         font-size: 0.5rem;
     }
 
@@ -69,21 +69,22 @@
         width: 100%;
         object-position: center;
         position: center;
-        background:#fff6a1;
+        background: #fff6a1;
     }
 
     .Score:focus {
-        background:lightblue;
+        background: lightblue;
     }
 </style>
 
 @extends('layouts.app')
 
 @section('content')
-    <div class="table-responsive">
-        {{--        <table class="table table-striped table-hover table-condensed">--}}
-        <table class="table table-striped table-bordered" border="1px solid black">
-            <thead>
+@if(\Auth::check())
+<div class="table-responsive">
+    {{-- <table class="table table-striped table-hover table-condensed">--}}
+    <table class="table table-striped table-bordered" border="1px solid black">
+        <thead>
             <tr>
                 <td>Num</td>
                 <td>Date/Heure</td>
@@ -94,29 +95,29 @@
                 <td>Equipe Ext.</td>
                 <td>Pensez-y</td>
             </tr>
-            </thead>
-            @foreach($allMatchBet as $key => $data)
-                @if(Auth::check() && $data->User_Id == \Auth::user()->id)
-                <tbody>
-                <tr id="{{$data->Match_Idt}}">
-                    <td>{{$data->Match_Num}}</td>
-                    <td class="DateHeure">{{$data->DteHre}}</td>
-                    <td>{{$data->Stade_Nom}}</td>
-                    <td>{{$data->Equipe_Nom_Dom}}</td>
-                    <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}" min="0" max="20" size="3px"
-                               maxlength="3" value="{{$data->ScoreDomicile}}"></td>
-                    <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}" min="0" max="20" size="3px"
-                               maxlength="3" value="{{$data->ScoreExterieur}}"></td>
-                    <td>{{$data->Equipe_Nom_Ext}}</td>
-                    <td>
-                        <a onclick="Valider({{$data->Match_Idt}}, {{$data->MatchEquipe_Idt_Dom}}, {{$data->MatchEquipe_Idt_Ext}}, {{\Auth::user()->id}});"
-                           class="Valider" href="#">Valider</a>
-                    </td>
-                </tr>
-                </tbody>
-                @endif
-            @endforeach
-        </table>
-    </div>
+        </thead>
+        @foreach($allMatchBet as $key => $data)
+        @if($data->User_Id == \Auth::user()->id)
+        <tbody>
+            <tr id="{{$data->Match_Idt}}">
+                <td>{{$data->Match_Num}}</td>
+                <td class="DateHeure">{{$data->DteHre}}</td>
+                <td>{{$data->Stade_Nom}}</td>
+                <td>{{$data->Equipe_Nom_Dom}}</td>
+                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}" min="0" max="20" size="3px"
+ maxlength="3" value="{{$data->ScoreDomicile}}"></td>
+                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}" min="0" max="20" size="3px"
+ maxlength="3" value="{{$data->ScoreExterieur}}"></td>
+                <td>{{$data->Equipe_Nom_Ext}}</td>
+                <td>
+                    <a onclick="Valider({{$data->Match_Idt}}, {{$data->MatchEquipe_Idt_Dom}}, {{$data->MatchEquipe_Idt_Ext}}, {{\Auth::user()->id}});"
+ class="Valider" href="#">Valider</a>
+                </td>
+            </tr>
+        </tbody>
+        @endif
+        @endforeach
+    </table>
+</div>
+@endif
 @endsection
-
