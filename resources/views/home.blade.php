@@ -96,7 +96,7 @@
             </tr>
             </thead>
             @foreach($allMatchBet as $key => $data)
-                @if($data->User_Id == \Auth::user()->id)
+                @if(Auth::check() && $data->User_Id == \Auth::user()->id)
                 <tbody>
                 <tr id="{{$data->Match_Idt}}">
                     <td>{{$data->Match_Num}}</td>
