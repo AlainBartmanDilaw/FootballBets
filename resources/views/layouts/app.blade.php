@@ -28,8 +28,8 @@
     <header class="row">
         @include('includes.header')
     </header>
-
 </div>
+
 </body>
 
 </html>
