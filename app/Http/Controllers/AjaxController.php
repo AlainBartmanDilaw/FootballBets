@@ -18,19 +18,10 @@ class AjaxController extends Controller
 
     public function ajax_call(Request $request)
     {
-        $bet = new App\Bet();
-        $bet->User()->associate($request->get('User_id'));
-        $bet->MatchEquipe()->associate($request->get('MatchEquipe_Idt_Dom'));
-        $bet->score = $request->get('ScoreDomicile');
-        $bet->save();
+        $bet = App\Bet::InsertBet($request, 'Dom', 'Domicile');
+        $bet = App\Bet::InsertBet($request, 'Ext', 'Exterieur');
 
-        $bet = new App\Bet;
-        $bet->User()->associate($request->get('User_id'));
-        $bet->MatchEquipe()->associate($request->get('MatchEquipe_Idt_Ext'));
-        $bet->score = $request->get('ScoreExterieur');
-        $bet->save();
-
-        $retour = json_encode('OK');
-        return $retour;
+        return json_encode('OK');
     }
+
 }

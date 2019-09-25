@@ -20,6 +20,20 @@ class Bet extends Model
         'User_Id',
     ];
 
+    /**
+     * @param Request $request
+     * @return App\Bet
+     */
+    public static function InsertBet($request, $role, $role2): Bet
+    {
+        $bet = new Bet();
+        $bet->User()->associate($request->get('User_id'));
+        $bet->MatchEquipe()->associate($request->get('MatchEquipe_Idt_' . $role));
+        $bet->score = $request->get('Score' . $role2);
+        $bet->save();
+        return $bet;
+    }
+
     public function User()
     {
         return $this->belongsTo(User::class, 'User_id', 'id');

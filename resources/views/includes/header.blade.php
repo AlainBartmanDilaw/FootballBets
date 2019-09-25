@@ -10,6 +10,20 @@
             <li class="nav-item dropdown">
                 <a id="navbarddLanguage" class="navbar-brand dropdown-toggle" href="#" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ __('message.ChampionShip') }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/locale/en">
+                        UEFA Champions League
+                    </a>
+                    <a class="dropdown-item" href="/locale/fr">
+                        UEFA Europa League
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="navbarddLanguage" class="navbar-brand dropdown-toggle" href="#" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ __('message.Language') }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

@@ -13,5 +13,6 @@ return [
     'Rules' => 'Voici les règles et principe de ce jeu de paris !',
     'PleaseSendTo' => 'Pour toute information, veuillez m\'envoyer un message à ',
     'Language' => 'Langue',
-    'About'=>'A Propos',
+    'About' => 'A Propos',
+    'ChampionShip' => 'Compétition'
 ];
