@@ -41,9 +41,9 @@ Route::get('test2', function () {
     return View::make('pages.test2');
 });
 
-Route::get('welcome2', function () {
-    return View::make('pages.welcome2');
-})->name('welcome2');
+//Route::get('welcome2', function () {
+//    return View::make('pages.welcome2');
+//})->name('welcome2');
 
 Route::get('welcome', function () {
     return View::make('pages.welcome');
