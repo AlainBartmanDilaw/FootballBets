@@ -22,6 +22,7 @@ class CreateAllMatchView extends Migration
      , mee.Idt MatchEquipe_Idt_Ext
      , ee.Idt Equipe_Idt_Ext
      , ee.Nom Equipe_Nom_Ext
+     , j.Num Journee_Num
      , j.Lib Journee_Lib
      , p.Lib Phase_Lib
      , s.Nom Stade_Nom
