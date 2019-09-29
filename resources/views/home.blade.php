@@ -1,4 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
 <style type="text/css">
     .right {
         text-align: right;
@@ -21,6 +22,10 @@
         background: #98dfb6;
     }
 
+    .Score:disabled{
+        background: #c6c8ca;
+    }
+
     input {
         text-align: center;
     }
@@ -32,11 +37,22 @@
 </style>
 
 <script>
+
     $(document).ready(function () {
         $('.Score').change(function () {
-            var currentRow = $(this).closest("tr");
-            $('#Valider_' + currentRow[0].id).attr('hidden', false);
+            showValider($(this));
         });
+
+        function showValider(context) {
+            const currentRow = context.closest("tr");
+            const fieldId = currentRow[0].id;
+            var isafter = moment.utc($("#DH_" + fieldId).text(), "YYYY-MM-DD  HH:mm:ss").isAfter(moment());
+
+            if (isafter) {
+                $('#Valider_' + fieldId).attr('hidden', false);
+            }
+        }
+
     });
 
     function Valider(matchIdentifier,
@@ -66,16 +82,15 @@
             type: "post",
             dataType: 'JSON',
             success: function (data) {
-
-                // $('.ajax').empty();
-                // $('.ajax').append('Count Users =' + data);
-
-                $('#Valider_' + matchIdentifier).attr('hidden', true);
-
+                // $('#Valider_' + matchIdentifier).attr('hidden', true);
             },
             error: function (e) {
-                console.log(e.responseText);
+                var reponse = JSON.parse(e.responseText);
+                alert(reponse['message']);
             },
+            complete: function () {
+                $('#Valider_' + matchIdentifier).attr('hidden', true);
+            }
         });
     }
 
@@ -105,19 +120,39 @@
                         <tbody>
                         <tr id="{{$data->Match_Idt}}">
                             <td>{{$data->Match_Num}}</td>
-                            <td class="DateHeure">{{$data->DteHre}}</td>
+                            <td id='DH_{{$data->Match_Idt}}' class="DateHeure">{{$data->DteHre}}</td>
                             <td>{{$data->Stade_Nom}}</td>
                             <td>{{$data->Equipe_Nom_Dom}}</td>
-                            <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}"
-                                       min="0" max="20" size="3px"
-                                       onchange="this.className+=(this.value=='')?'':'visited';"
-                                       onkeyup="this.setAttribute('value', this.value);"
-                                       maxlength="2" value="{{$data->ScoreDomicile}}"></td>
-                            <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}"
-                                       min="0" max="20" size="3px"
-                                       onchange="this.className+=(this.value=='')?'':'visited';"
-                                       onkeyup="this.setAttribute('value', this.value);"
-                                       maxlength="2" value="{{$data->ScoreExterieur}}"></td>
+                            @if($data->Disponible=="OK")
+                                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}"
+                                           min="0" max="20" size="3px"
+                                           onchange="this.className+=(this.value=='')?'':'visited';"
+                                           onkeyup="this.setAttribute('value', this.value);"
+                                           maxlength="2" value="{{$data->ScoreDomicile}}">
+                                </td>
+                                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}"
+                                           {{--                                       disabled="{{$data->Disponible}}=='OK'?'--}}
+                                           min="0" max="20" size="3px"
+                                           onchange="this.className+=(this.value=='')?'':'visited';"
+                                           onkeyup="this.setAttribute('value', this.value);"
+                                           maxlength="2" value="{{$data->ScoreExterieur}}">
+                                </td>
+                            @else
+                                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}"
+                                           disabled
+                                           min="0" max="20" size="3px"
+                                           onchange="this.className+=(this.value=='')?'':'visited';"
+                                           onkeyup="this.setAttribute('value', this.value);"
+                                           maxlength="2" value="{{$data->ScoreDomicile}}">
+                                </td>
+                                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}"
+                                           disabled
+                                           min="0" max="20" size="3px"
+                                           onchange="this.className+=(this.value=='')?'':'visited';"
+                                           onkeyup="this.setAttribute('value', this.value);"
+                                           maxlength="2" value="{{$data->ScoreExterieur}}">
+                                </td>
+                            @endif
                             <td>{{$data->Equipe_Nom_Ext}}</td>
                             <td>
                                 <a onclick="Valider({{$data->Match_Idt}}, {{$data->MatchEquipe_Idt_Dom}}, {{$data->MatchEquipe_Idt_Ext}}, {{\Auth::user()->id}});"

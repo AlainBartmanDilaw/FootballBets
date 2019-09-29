@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bet extends Model
 {
     //
+    protected $primaryKey = 'idt';
     public $table = "Bet";
 
     /**
@@ -20,15 +21,37 @@ class Bet extends Model
         'User_Id',
     ];
 
+    public static function Get($userid, $matchequipe) : Bet
+    {
+        \Log::info("Recherche Bet " . $userid . " " . $matchequipe);
+        $values = Bet::where([
+            ['User_Id', $userid],
+            ['MatchEquipe_Idt', $matchequipe],
+        ])->get();
+        foreach ($values as $value) {
+            \Log::info("Enregistrement trouvé : " . $value->idt);
+            return $value; //
+        }
+
+        \Log::info("Enregistrement non trouvé... Création");
+        $bet = new Bet();
+        $bet->User()->associate($userid);
+        $bet->MatchEquipe()->associate($matchequipe);
+        return $bet; // Non trouvé !
+    }
+
+
     /**
      * @param Request $request
      * @return App\Bet
      */
     public static function InsertBet($request, $role, $role2): Bet
     {
-        $bet = new Bet();
-        $bet->User()->associate($request->get('User_id'));
-        $bet->MatchEquipe()->associate($request->get('MatchEquipe_Idt_' . $role));
+        $userid = $request->get('User_id');
+        $matchequipe = $request->get('MatchEquipe_Idt_' . $role);
+
+        $bet = Bet::Get($userid, $matchequipe);
+
         $bet->score = $request->get('Score' . $role2);
         $bet->save();
         return $bet;
