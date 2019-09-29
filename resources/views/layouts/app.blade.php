@@ -23,11 +23,14 @@
 </head>
 
 <body>
+<header class="row">
+    @include('includes.header')
+</header>
 
 <div class="container">
-    <header class="row">
-        @include('includes.header')
-    </header>
+    <main class="py-4">
+        @yield('content')
+    </main>
 </div>
 
 </body>
