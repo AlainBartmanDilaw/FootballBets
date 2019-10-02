@@ -13,7 +13,7 @@ class CreateAllMatchBetView extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `allmatchbet` AS SELECT m.*
+        DB::statement("CREATE OR REPLACE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `allmatchbet` AS SELECT m.*
      , u.Id User_Id
    , ( SELECT b.Score
 	      FROM `bet` b
