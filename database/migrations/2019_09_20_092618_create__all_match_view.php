@@ -15,7 +15,7 @@ class CreateAllMatchView extends Migration
     {
         DB::statement("CREATE OR REPLACE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `allmatch` AS SELECT m.Idt Match_Idt, m.Num Match_Num
      , m.DteHre
-     , case sign(m.DteHre-NOW()) when 1 then 'Ok' ELSE 'KO' END Disponible
+     , case sign(m.DteHre-NOW()) when 1 then 'OK' ELSE 'KO' END Disponible
      , med.Idt MatchEquipe_Idt_Dom
      , ed.Idt Equipe_Idt_Dom
      , ed.Nom Equipe_Nom_Dom
