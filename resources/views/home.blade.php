@@ -22,7 +22,7 @@
         background: #98dfb6;
     }
 
-    .Score:disabled{
+    .Score:disabled {
         background: #c6c8ca;
     }
 
@@ -125,6 +125,7 @@
                             <td>{{$data->Equipe_Nom_Dom}}</td>
                             @if($data->Disponible=="OK")
                                 <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}"
+                                           placeholder="Score ?"
                                            min="0" max="20" size="3px"
                                            onchange="this.className+=(this.value=='')?'':'visited';"
                                            onkeyup="this.setAttribute('value', this.value);"
@@ -132,6 +133,7 @@
                                 </td>
                                 <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}"
                                            {{--                                       disabled="{{$data->Disponible}}=='OK'?'--}}
+                                           placeholder="Score ?"
                                            min="0" max="20" size="3px"
                                            onchange="this.className+=(this.value=='')?'':'visited';"
                                            onkeyup="this.setAttribute('value', this.value);"
