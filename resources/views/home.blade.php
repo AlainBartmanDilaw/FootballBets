@@ -22,7 +22,7 @@
         background: #98dfb6;
     }
 
-    .Score:disabled{
+    .Score:disabled {
         background: #c6c8ca;
     }
 
