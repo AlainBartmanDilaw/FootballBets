@@ -46,20 +46,20 @@
         function showValider(context) {
             const currentRow = context.closest("tr");
             const fieldId = currentRow[0].id;
-            var isafter = moment.utc($("#DH_" + fieldId).text(), "YYYY-MM-DD  HH:mm:ss").isAfter(moment());
+            // var isafter = moment.utc($("#DH_" + fieldId).text(), "YYYY-MM-DD  HH:mm:ss").isAfter(moment());
 
-            if (isafter) {
+            // if (isafter) {
                 $('#Valider_' + fieldId).attr('hidden', false);
-            }
+            // }
         }
 
     });
 
     function Valider(matchIdentifier,
                      equipeDomicileIdentifiant,
-                     equipeExterieurIdentifiant,
-                     UserId) {
-        console.log("Match " + matchIdentifier + ', ' + equipeDomicileIdentifiant + ', ' + equipeExterieurIdentifiant + ', ' + UserId);
+                     equipeExterieurIdentifiant
+                     ) {
+        // console.log("Match " + matchIdentifier + ', ' + equipeDomicileIdentifiant + ', ' + equipeExterieurIdentifiant);
 
         var identifantDomicile = '#' + matchIdentifier + '_' + equipeDomicileIdentifiant;
         var identifantExterieur = '#' + matchIdentifier + '_' + equipeExterieurIdentifiant;
@@ -67,12 +67,11 @@
         var scoreDomicile = $(identifantDomicile).val();
         var scoreExterieur = $(identifantExterieur).val();
 
-        console.log("Match " + matchIdentifier + ', ' + scoreDomicile + ', ' + scoreExterieur + ', ' + UserId);
+        // console.log("Match " + matchIdentifier + ', ' + scoreDomicile + ', ' + scoreExterieur);
         $.ajax({
-            url: "/ajax",
+            url: "/resultat",
             data: {
                 "_token": "{{ csrf_token() }}",
-                "User_id": UserId,
                 "Match_Idt": matchIdentifier,
                 "MatchEquipe_Idt_Dom": equipeDomicileIdentifiant,
                 "MatchEquipe_Idt_Ext": equipeExterieurIdentifiant,
@@ -116,15 +115,15 @@
                     <td>Pensez-y</td>
                 </tr>
                 </thead>
-                @foreach($allMatchBet as $key => $data)
-                    @if($data->User_Id == \Auth::user()->id)
+                @foreach($allMatch as $key => $data)
+{{--                    @if($data->User_Id == \Auth::user()->id)--}}
                         <tbody>
                         <tr id="{{$data->Match_Idt}}">
                             <td>{{$data->Match_Num}}</td>
                             <td id='DH_{{$data->Match_Idt}}' class="DateHeure">{{$data->DteHre}}</td>
                             <td>{{$data->Stade_Nom}}</td>
                             <td>{{$data->Equipe_Nom_Dom}}</td>
-                            @if($data->Disponible=="OK")
+{{--                            @if($data->Disponible=="OK")--}}
                                 <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}"
                                            placeholder="Score ?"
                                            min="0" max="20" size="3px"
@@ -140,30 +139,30 @@
                                            onkeyup="this.setAttribute('value', this.value);"
                                            maxlength="2" value="{{$data->ScoreExterieur}}">
                                 </td>
-                            @else
-                                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}"
-                                           disabled
-                                           min="0" max="20" size="3px"
-                                           onchange="this.className+=(this.value=='')?'':'visited';"
-                                           onkeyup="this.setAttribute('value', this.value);"
-                                           maxlength="2" value="{{$data->ScoreDomicile}}">
-                                </td>
-                                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}"
-                                           disabled
-                                           min="0" max="20" size="3px"
-                                           onchange="this.className+=(this.value=='')?'':'visited';"
-                                           onkeyup="this.setAttribute('value', this.value);"
-                                           maxlength="2" value="{{$data->ScoreExterieur}}">
-                                </td>
-                            @endif
+{{--                            @else--}}
+{{--                                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Dom}}"--}}
+{{--                                           disabled--}}
+{{--                                           min="0" max="20" size="3px"--}}
+{{--                                           onchange="this.className+=(this.value=='')?'':'visited';"--}}
+{{--                                           onkeyup="this.setAttribute('value', this.value);"--}}
+{{--                                           maxlength="2" value="{{$data->ScoreDomicile}}">--}}
+{{--                                </td>--}}
+{{--                                <td><input class="Score center" id="{{$data->Match_Idt}}_{{$data->MatchEquipe_Idt_Ext}}"--}}
+{{--                                           disabled--}}
+{{--                                           min="0" max="20" size="3px"--}}
+{{--                                           onchange="this.className+=(this.value=='')?'':'visited';"--}}
+{{--                                           onkeyup="this.setAttribute('value', this.value);"--}}
+{{--                                           maxlength="2" value="{{$data->ScoreExterieur}}">--}}
+{{--                                </td>--}}
+{{--                            @endif--}}
                             <td>{{$data->Equipe_Nom_Ext}}</td>
                             <td>
-                                <a onclick="Valider({{$data->Match_Idt}}, {{$data->MatchEquipe_Idt_Dom}}, {{$data->MatchEquipe_Idt_Ext}}, {{\Auth::user()->id}});"
+                                <a onclick="Valider({{$data->Match_Idt}}, {{$data->MatchEquipe_Idt_Dom}}, {{$data->MatchEquipe_Idt_Ext}});"
                                    class="Valider" href="#" hidden id="Valider_{{$data->Match_Idt}}">Valider</a>
                             </td>
                         </tr>
                         </tbody>
-                    @endif
+{{--                    @endif--}}
                 @endforeach
             </table>
         </div>

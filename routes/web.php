@@ -53,14 +53,27 @@ Route::get('logout', 'LoginController@logout');
 
 Route::get('home', function () {
     $allMatchBet = DB::table('AllMatchBet')->get();
-    \Log::info($allMatchBet->all());
+//    \Log::info($allMatchBet->all());
     return view('home', ['allMatchBet' => $allMatchBet]);
 })->name('home');
 
 Route::get('/', function () {
     $allMatchBet = DB::table('AllMatchBet')->get();
-    \Log::info($allMatchBet->all());
+//    \Log::info($allMatchBet->all());
     return view('home', ['allMatchBet' => $allMatchBet]);
 })->name('home');
 
 Route::post('/ajax', 'AjaxController@ajax_call');
+
+Route::get('/admin', 'AdminController@admin')
+    ->middleware('isadmin')
+    ->name('admin');
+
+Route::get('/scores', function () {
+    $allMatch = DB::table('AllMatch')->get();
+    return view('scores', ['allMatch' => $allMatch]);
+})->name('scores');
+
+// Mise à jour des scores réalisés (résultat du match)
+Route::post('/resultat', 'AjaxController@resultat');
+

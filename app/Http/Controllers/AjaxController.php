@@ -24,4 +24,11 @@ class AjaxController extends Controller
         return json_encode('OK');
     }
 
+    public function resultat(Request $request)
+    {
+        $bet = App\MatchEquipe::UpdateScore($request);
+
+        return json_encode('OK');
+    }
+
 }

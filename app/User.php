@@ -45,4 +45,8 @@ class User extends Authenticatable
 //    {
 //        return $this->belongsTo(Bet::class, 'User_Id', 'id');
 //    }
+
+    public function isAdmin(){
+        return $this->admin = false;
+    }
 }
