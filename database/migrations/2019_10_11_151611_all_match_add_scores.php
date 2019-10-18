@@ -1,10 +1,10 @@
 <?php
 
-//use Illuminate\Support\Facades\Schema;
-// use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateAllMatchView extends Migration
+class AllMatchAddScores extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateAllMatchView extends Migration
      */
     public function up()
     {
-        \DB::statement("CREATE OR REPLACE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `allmatch` AS
+        DB::statement("CREATE OR REPLACE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `allmatch` AS
 SELECT m.Idt Match_Idt, m.Num Match_Num
      , m.DteHre
      , case sign(m.DteHre-NOW()) when 1 then 'OK' ELSE 'KO' END Disponible
      , med.Idt MatchEquipe_Idt_Dom
+     , med.Score ScoreDomicile
      , ed.Idt Equipe_Idt_Dom
      , ed.Nom Equipe_Nom_Dom
      , mee.Idt MatchEquipe_Idt_Ext
+     , mee.Score ScoreExterieur
      , ee.Idt Equipe_Idt_Ext
      , ee.Nom Equipe_Nom_Ext
      , j.Num Journee_Num
@@ -52,6 +54,6 @@ WHERE 1 = 1
      */
     public function down()
     {
-        \DB::statement('DROP VIEW IF EXISTS `AllMatchBet`');
+        DB::statement('DROP VIEW IF EXISTS `AllMatchBet`');
     }
 }
