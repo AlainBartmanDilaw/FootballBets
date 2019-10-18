@@ -18,9 +18,11 @@ SELECT m.Idt Match_Idt, m.Num Match_Num
      , m.DteHre
      , case sign(m.DteHre-NOW()) when 1 then 'OK' ELSE 'KO' END Disponible
      , med.Idt MatchEquipe_Idt_Dom
+     , med.Score ScoreDomicile
      , ed.Idt Equipe_Idt_Dom
      , ed.Nom Equipe_Nom_Dom
      , mee.Idt MatchEquipe_Idt_Ext
+     , mee.Score ScoreExterieur
      , ee.Idt Equipe_Idt_Ext
      , ee.Nom Equipe_Nom_Ext
      , j.Num Journee_Num
