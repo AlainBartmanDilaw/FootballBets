@@ -20,12 +20,12 @@ SELECT m.*
 	      FROM `bet` b
 		  WHERE b.User_Id = u.id
 		    AND b.MatchEquipe_Idt = m.MatchEquipe_Idt_Dom
-     ) ScoreDomicile
+     ) ScoreDomicile2
    , ( SELECT b.Score
 	      FROM `bet` b
 		  WHERE b.User_Id = u.id
 		    AND b.MatchEquipe_Idt = m.MatchEquipe_Idt_Ext
-	  ) ScoreExterieur
+	  ) ScoreExterieur2
 FROM `allmatch` m
    , `users` u");
     }
@@ -37,6 +37,6 @@ FROM `allmatch` m
      */
     public function down()
     {
-        DB::statement('DROP VIEW IF EXISTS `AllMatchBet`');
+        DB::statement('DROP VIEW IF EXISTS `allmatchbet`');
     }
 }

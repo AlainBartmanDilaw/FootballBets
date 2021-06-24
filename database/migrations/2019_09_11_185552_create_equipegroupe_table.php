@@ -24,11 +24,11 @@ class CreateEquipeGroupeTable extends Migration
 
             $table->foreign('Groupe_Idt')
                 ->references('Idt')
-                ->on('Groupe');
+                ->on('groupe');
 
             $table->foreign('Equipe_Idt')
                 ->references('Idt')
-                ->on('Equipe');
+                ->on('equipe');
         });
     }
 

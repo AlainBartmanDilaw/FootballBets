@@ -23,7 +23,7 @@ class CreateJourneeTable extends Migration
 
             $table->foreign('Phase_Idt')
                 ->references('Idt')
-                ->on('Phase');
+                ->on('phase');
 
         });
     }

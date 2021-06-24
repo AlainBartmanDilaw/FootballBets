@@ -28,11 +28,11 @@ class CreateCompeditTable extends Migration
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
             $table->foreign('Competition_Cod')
-                ->references('Cod')->on('Competition')
+                ->references('Cod')->on('competition')
                 ->onDelete('cascade');
 
             $table->foreign('Edition_Cod')
-                ->references('Cod')->on('Edition')
+                ->references('Cod')->on('edition')
                 ->onDelete('cascade');
 
         });

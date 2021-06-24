@@ -23,7 +23,7 @@ SELECT m.Match_Idt
      , m.Equipe_Idt_Dom
      , m.Equipe_Nom_Dom
      , m.MatchEquipe_Idt_Ext
-     , m.ScoreExterieur ScoreExterieurRealise 
+     , m.ScoreExterieur ScoreExterieurRealise
      , m.Equipe_Idt_Ext
      , m.Equipe_Nom_Ext
      , m.Journee_Num
@@ -52,6 +52,6 @@ FROM `allmatch` m
      */
     public function down()
     {
-        DB::statement('DROP VIEW IF EXISTS `AllMatchBet`');
+        DB::statement('DROP VIEW IF EXISTS `allmatchbet`');
     }
 }
