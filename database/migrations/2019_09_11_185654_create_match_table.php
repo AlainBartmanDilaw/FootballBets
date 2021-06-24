@@ -27,13 +27,13 @@ class CreateMatchTable extends Migration
 
             $table->foreign('DateJournee_Idt')
                 ->references('Idt')
-                ->on('DateJournee');
+                ->on('datejournee');
             $table->foreign('Stade_Idt')
                 ->references('Idt')
-                ->on('Stade');
+                ->on('stade');
             $table->foreign('Groupe_Idt')
                 ->references('Idt')
-                ->on('Groupe');
+                ->on('groupe');
 
             $table->unique(['DateJournee_Idt', 'Num']);
 

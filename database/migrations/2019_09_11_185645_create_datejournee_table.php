@@ -28,7 +28,7 @@ class CreateDatejourneeTable extends Migration
                 ->onDelete('cascade');
 
             $table->foreign('CompEdit_Idt')
-                ->references('idt')->on('CompEdit')
+                ->references('idt')->on('compedit')
                 ->onDelete('cascade');
 
             $table->unique(['CompEdit_Idt', 'Journee_idt', 'dte']);

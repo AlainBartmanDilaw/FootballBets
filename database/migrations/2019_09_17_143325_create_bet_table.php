@@ -25,11 +25,11 @@ class CreateBetTable extends Migration
 
             $table->foreign('matchequipe_idt')
                 ->references('Idt')
-                ->on('MatchEquipe');
+                ->on('matchequipe');
 
             $table->foreign('User_Id')
                 ->references('Id')
-                ->on('Users');
+                ->on('users');
         });
     }
 

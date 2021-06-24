@@ -22,7 +22,7 @@ class CreateGroupeTable extends Migration
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
             $table->foreign('CompEdit_Idt')
-                ->references('idt')->on('CompEdit')
+                ->references('idt')->on('compedit')
                 ->onDelete('cascade');
 
             $table->unique(['CompEdit_Idt', 'Cod']);

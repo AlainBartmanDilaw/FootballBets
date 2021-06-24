@@ -24,7 +24,7 @@ class CreateStadeTable extends Migration
 
             $table->foreign('Ville_Idt')
                 ->references('Idt')
-                ->on('Ville');
+                ->on('ville');
         });
     }
 
