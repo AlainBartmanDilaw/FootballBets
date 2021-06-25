@@ -1,3 +1,6 @@
+[![Laravel](https://github.com/pumarc/FootballBets/actions/workflows/laravel.yml/badge.svg)](https://github.com/pumarc/FootballBets/actions/workflows/laravel.yml)
+[![PHP Composer](https://github.com/pumarc/FootballBets/actions/workflows/php.yml/badge.svg)](https://github.com/pumarc/FootballBets/actions/workflows/php.yml)
+
 # FootballBets
 
 ##Installer l'application depuis un projet Git.
@@ -19,7 +22,7 @@ Les packages nécessaires sera alors rechargés/mis à jour dans le repository.
 Télécharger composer sur le site https://getcomposer.org puis l'installer.
 
 ###PHP
-Télécharger la dernière version de PHP sur le site 
+Télécharger la dernière version de PHP sur le site
 	https://windows.php.net/download/
 ou  https://www.php.net/downloads.php
 
@@ -48,10 +51,10 @@ Se déplacer dans le répertoire du projet et lancer la commande :<br/>
 
     php artisan serve --port=8000
 
-Lancer un navi(bleu ?)gateur puis saisir l'adresse 
+Lancer un navi(bleu ?)gateur puis saisir l'adresse
 
     http://127.0.0.1:8000
-    
+
 ##Problème de fichier .env
 Le fichier .env n'est pas envoyé sur Git (fait partie des fichiers ignorés).
 Il faudra donc le recréer à partir du fichier .env.example.
@@ -59,11 +62,11 @@ Il faudra donc le recréer à partir du fichier .env.example.
 ###Modification paramétrage base MySQL
 Changer la connexion MySQL avec les bonnes inforamtions...
 
-##Problème de clé 
-Au premier lancement, il risque de se produire l'erreur "Your app key is missing" 
+##Problème de clé
+Au premier lancement, il risque de se produire l'erreur "Your app key is missing"
 
     php artisan key:generate
-    
+
 Le site devrait alors être "opérationnel"...
 
 #Créer une table
@@ -88,7 +91,7 @@ Une fois le script de la table terminé, il faut la créer dans la base de donn�
 
 exemple :
 	php artisan make:seeder NationTableSeeder
-	
+
 Cette opération créer une classe nommée NationTableSeeder, contenant la fonction run qui sera lancée pour alimenter la table avec les données.
 Il suffit alors de modifier le code pour renseigner l'ensemble des enregistrements :
 
@@ -136,4 +139,3 @@ La commande suivante permet de rafraichir les classes...
 ##Installation
 
 	composer require lavary/laravel-menu
-
