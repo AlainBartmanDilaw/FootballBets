@@ -13,61 +13,24 @@
 
 Auth::routes();
 
-Route::get('locale/{locale}', function ($locale) {
-    Session::put('locale', $locale);
-    return redirect()->back();
-});
-
-Route::get('/phpinfo', function () {
-    return response()->json([
-        'stuff' => phpinfo()
-    ]);
-});
-
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('about', function () {
+Route::get('About', function () {
     return View::make('pages.about');
 })->name('about');
 
-Route::get('contact', 'ContactController@index'); // ->name('contact');
+Route::get('Contact', 'ContactController@index');
 
-Route::get('test', function () {
-    return View::make('pages.test');
-})->name('test');
-
-Route::get('test2', function () {
-    return View::make('pages.test2');
-});
-
-//Route::get('welcome2', function () {
-//    return View::make('pages.welcome2');
-//})->name('welcome2');
-
-Route::get('welcome', function () {
-    return View::make('pages.welcome');
-})->name('welcome');
-
-Route::get('logout', 'LoginController@logout');
-
-Route::get('home', function () {
-    $allMatchBet = DB::table('AllMatchBet')->get();
-//    \Log::info($allMatchBet->all());
-    return view('home', ['allMatchBet' => $allMatchBet]);
-})->name('home');
+Route::get('Logout', 'LoginController@logout');
 
 Route::get('/', function () {
-    $allMatchBet = DB::table('AllMatchBet')->get();
+    $allMatchBet = DB::table('allmatchbet')->get();
 //    \Log::info($allMatchBet->all());
-    return view('home', ['allMatchBet' => $allMatchBet]);
+    return view('pages.home', ['allMatchBet' => $allMatchBet]);
 })->name('home');
 
 Route::post('/ajax', 'AjaxController@ajax_call');
 
-Route::get('/admin', 'AdminController@admin')
-    ->middleware('isadmin')
-    ->name('admin');
+Route::get('Admin', 'AdminController@admin')
+    ->middleware('isadmin');
 
 Route::get('/scores', function () {
     $allMatch = DB::table('AllMatch')->get();
@@ -75,5 +38,4 @@ Route::get('/scores', function () {
 })->name('scores');
 
 // Mise à jour des scores réalisés (résultat du match)
-Route::post('/resultat', 'AjaxController@resultat');
-
+Route::post('Resultat', 'AjaxController@resultat');

@@ -14,5 +14,7 @@ return [
     'PleaseSendTo' => 'For any information, please send a message to ',
     'Language' => 'Language',
     'About' => 'About',
-    'ChampionShip' => 'ChampionShip'
+    'ChampionShip' => 'ChampionShip',
+    'Home' => 'Home',
+    'Contact' => 'Contact'
 ];
