@@ -1,3 +1,4 @@
+@include('includes.head')
 {{--@extends('layouts.default')--}}
 @extends('layouts.app')
 
@@ -102,3 +103,5 @@
     </div>
 </div>
 @endsection
+
+@include('includes.head')

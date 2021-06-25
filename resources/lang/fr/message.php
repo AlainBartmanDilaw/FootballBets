@@ -3,6 +3,7 @@ return [
     'welcome' => 'Bienvenue dans l\'application FootballBets',
     'Register' => 'S\'enregistrer',
     'Login' => 'Se connecter',
+    'Logout' => 'Se deconnecter',
     'DevelopedUsing' => 'Ce site a été développé grace à ',
     'WithFriendsBets' => 'Paris sportifs entre amis...',
     'Name' => 'Nom',
@@ -14,5 +15,8 @@ return [
     'PleaseSendTo' => 'Pour toute information, veuillez m\'envoyer un message à ',
     'Language' => 'Langue',
     'About' => 'A Propos',
-    'ChampionShip' => 'Compétition'
+    'ChampionShip' => 'Compétition',
+    'Home' => 'Accueil',
+    'Contact' => 'Contact',
+    'Administrator' => 'Administration'
 ];

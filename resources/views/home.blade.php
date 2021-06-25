@@ -1,4 +1,6 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+@include('includes.head')
+@extends('layouts.app')
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
 <style type="text/css">
     .right {
@@ -96,11 +98,9 @@
 
 </script>
 
-@extends('layouts.app')
-
 @section('content')
     @auth {{-- Le user est il-connecté ? --}}
-    @isadmin
+    @if (Auth::user()->isadmin())
         <div class="table-responsive">
             {{-- <table class="table table-striped table-hover table-condensed">--}}
             <table class="table table-striped table-bordered" border="1px solid black">
@@ -167,7 +167,7 @@
                 @endforeach
             </table>
         </div>
-    @endisadmin
+    @endif
     @endauth
     @guest
         {{-- The user is not authenticated... --}}

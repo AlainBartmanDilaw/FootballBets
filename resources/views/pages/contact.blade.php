@@ -1,3 +1,4 @@
+@include('includes.head')
 @extends('layouts.app')
 
 @section('content')
@@ -8,3 +9,5 @@
     </div>
 </div>
 @endsection
+
+@include('includes.head')
